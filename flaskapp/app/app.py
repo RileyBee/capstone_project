@@ -18,37 +18,73 @@ def main():
 def register():
     return render_template('register.html')
 
-@app.route('/signup', methods=['POST'])
+@app.route('/signup', methods=['GET','POST'])
 def signup():
     username = str(request.form['username'])
     password = str(request.form['password'])
     email = str(request.form['email'])
     cursor = mysql.get_db().cursor()
-    cursor.execute("INSERT INTO users (username,password,email)VALUES(%s,%s,%s)",(username,password,email))
+    cursor.execute("INSERT INTO users (username,password,email) \
+    VALUES(%s,%s,%s)",(username,password,email))
     mysql.get_db().commit()
-    return redirect(url_for("index"))
+    if request.method == 'POST':
+        return redirect(url_for("index"))
 
-@app.route('/authenticate', methods=['POST'])
+
+@app.route('/authenticate', methods=['GET','POST'])
 def authenticate():
     username = str(request.form['username'])
     password = str(request.form['password'])
     cursor = mysql.get_db().cursor()
-    cursor.execute("SELECT username from flaskDB.users where username='"+ username +"'" )
+    cursor.execute("SELECT username from flaskDB.users \
+    where username='"+ username +"'" )
     user = cursor.fetchone()
     pcursor = mysql.get_db().cursor()
-    pcursor.execute("SELECT password from flaskDB.users where password='"+ password +"'" )
+    pcursor.execute("SELECT password from flaskDB.users \
+    where password='"+ password +"'" )
     pas = pcursor.fetchone()
 
     if len(user) is 1:
         if len(pas) is 1:
             return redirect(url_for("index"))
+        else:
+            return redirect(url_for("register"))
 
-    else:
-        return redirect(url_for("register"))
 
-@app.route('/index')
+@app.route('/index', methods=['GET','POST'])
 def index():
     return render_template('index.html')
+
+@app.route('/search', methods=['GET','POST'])
+def search():
+    #Location variables from index
+    state = str(request.form['state'])
+    county = str(request.form['county'])
+    city = str(request.form['city'])
+
+    #School connector and query.
+    sch_cursor = mysql.get_db().cursor()
+    sch_cursor.execute("SELECT school_name,county,city, \
+    num_students,school_rank,student_ratio,test_scores,address \
+    from flaskDB.schools where state='"+ state +"' OR county='"+ county +"' \
+    OR city='"+ city +"'")
+    school = sch_cursor.fetchall()
+
+    #Crime connector and query.
+    cri_cursor = mysql.get_db().cursor()
+    cri_cursor.execute("SELECT year,violent,property,murder,rape, \
+    robbery,assault,burglary,larceny,vehicle,arson \
+    from flaskDB.crime where state='"+ state +"' OR county='"+ county +"'")
+    crime = cri_cursor.fetchall()
+
+    #Jobs connector and query.
+    job_cursor = mysql.get_db().cursor()
+    job_cursor.execute("SELECT title,company,location,description,hyperlink \
+    from flaskDB.jobs where state='"+ state +"' OR county='"+ county +"'")
+    job = job_cursor.fetchall()
+
+    #render results template, pass results of queries
+    return render_template('results.html', job=job, crime=crime,school=school)
 
 
 if __name__ == "__main__":

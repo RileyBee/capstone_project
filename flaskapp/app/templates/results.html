@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, td, th {
+    border: 1px solid black;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+th {
+    text-align: center;
+}
+</style>
+<meta charset="utf-8">
+<title>Citysearch</title>
+<link href="{{url_for('static', filename='bootstrap.min.css')}}" rel="stylesheet" />
+<link href="{{url_for('static', filename='layback.css')}}" rel="stylesheet" />
+
+</head>
+<body>
+  <div class="container">
+      <div class="header">
+          <nav>
+              <ul class="nav nav-pills pull-right">
+                  <li role="presentation"><a href="/index">Home</a>
+                  </li>
+              </ul>
+          </nav>
+
+      </div>
+      <div class="jumbotron">
+        <h3>School rankings:</h3>
+        <table>
+          <tr>
+          <th>School</th>
+          <th>County</th>
+          <th>City</th>
+          <th>Students</th>
+          <th>Rank</th>
+          <th>Teacher Ratio</th>
+          <th>Avg Test Scores</th>
+          <th>Address</th>
+        </tr>
+
+      {% for s in school %}
+
+        <tr>
+        <td>{{s.0}}</td>
+        <td>{{s.1}}</td>
+        <td>{{s.2}}</td>
+        <td>{{s.3}}</td>
+        <td>{{s.4}}</td>
+        <td>{{s.5}}</td>
+        <td>{{s.6}}</td>
+        <td>{{s.7}}</td>
+
+        {% endfor %}
+
+        </tr>
+        </table>
+        <h3>Crimerate data:</h3>
+        <table>
+          <tr>
+          <th>Year</th>
+          <th>Violent</th>
+          <th>Property</th>
+          <th>Murder</th>
+          <th>Rape</th>
+          <th>Robbery</th>
+          <th>Assault</th>
+          <th>Burglary</th>
+          <th>Larceny</th>
+          <th>Vehicle</th>
+          <th>Arson</th>
+        </tr>
+
+      {% for c in crime %}
+
+        <tr>
+        <td>{{c.0}}</td>
+        <td>{{c.1}}</td>
+        <td>{{c.2}}</td>
+        <td>{{c.3}}</td>
+        <td>{{c.4}}</td>
+        <td>{{c.5}}</td>
+        <td>{{c.6}}</td>
+        <td>{{c.7}}</td>
+        <td>{{c.8}}</td>
+        <td>{{c.9}}</td>
+        <td>{{c.10}}</td>
+
+
+        {% endfor %}
+
+        </tr>
+        </table>
+
+        <h3>Local Jobs:</h3>
+        <table>
+          <tr>
+          <th>Job Title</th>
+          <th>Company</th>
+          <th>Location</th>
+          <th>Description</th>
+          <th>Hyperlink</th>
+
+        </tr>
+
+      {% for j in job %}
+
+        <tr>
+        <td>{{j.0}}</td>
+        <td>{{j.1}}</td>
+        <td>{{j.2}}</td>
+        <td>{{j.3}}</td>
+        <td><a href="{{j.4}}">learn more</a></td>
+
+
+        {% endfor %}
+
+        </tr>
+        </table>
+
+      </div>
+      </div>
+
+
+	<script>$(function () {$('[data-toggle="popover"]').popover() }) </script>
+	<script src="{{url_for('static', filename='jquery-3.2.1.min.js')}}"></script>
+	<script src="{{url_for('static', filename='bootstrap.min.js')}}"></script>
+</body>
+</html>

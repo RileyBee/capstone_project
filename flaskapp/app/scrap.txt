@@ -1,0 +1,17 @@
+from flask_table import Table, Col
+
+class Results(Table):
+    id = Col('school_id', show=False)
+    sname = Col('school_name')
+    district = Col('district')
+    release_date = Col('Release Date')
+    publisher = Col('Publisher')
+    media_type = Col('Media')
+
+
+
+
+
+
+    SELECT school_name,district_name,num_students,school_rank,student_ratio,test_scores,address
+    from flaskDB.schools where state='NC' AND city='Raeford'
