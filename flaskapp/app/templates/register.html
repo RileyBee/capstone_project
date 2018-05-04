@@ -21,29 +21,62 @@
       <div class="jumbotron">
 
 
-        <h2>Please complete registration</h2>
+        <h3>Please complete registration</h3>
           <div class="row">
             <div class= "col-xs-12">
       		  <form class="form-horizontal" action="/signup" method="post">
+            {% if error %}<h4>{{ error }}</h4>{% endif %}
+              <div class="form-group">
+                <label class="control-label col-sm-4" for="firstname">First Name:</label>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                <input type="text" name="firstname" placeholder="First name">
+              </div>
+            </div>
 
             <div class="form-group">
-              <label class="control-label col-sm-4" for="username">Username:</label>
+              <label class="control-label col-sm-4" for="lastname">Last name:</label>
+              <div class="col-xs-12 col-sm-6 col-md-4">
+              <input type="text" name="lastname" placeholder="Last name">
+            </div>
+          </div>
+
+            <div class="form-group">
+              <label class="control-label col-sm-4" for="username">* Username:</label>
               <div class="col-xs-12 col-sm-6 col-md-4">
               <input type="username" name="username" placeholder="Enter username">
             </div>
           </div>
       			<div class="form-group">
-      				<label class="control-label col-sm-4" for="password">Password:</label>
+      				<label class="control-label col-sm-4" for="password">* Password:</label>
       				<div class="col-xs-12 col-sm-6 col-md-4">
       					<input type="password" name="password" placeholder="Enter password">
       				</div>
       			</div>
             <div class="form-group">
-      				<label class="control-label col-sm-4" for="email">Email:</label>
+      				<label class="control-label col-sm-4" for="email">* Email:</label>
       				<div class="col-xs-12 col-sm-6 col-md-4">
       					<input type="email" name="email" placeholder="Enter email">
       				</div>
       			</div>
+            <div>
+              <div>
+            <h4>To assist with password reset</h4>
+            </div>
+          </div>
+
+            <div class="form-group">
+              <label class="control-label col-sm-4" for="secretq">* Secret Question:</label>
+              <div class="col-xs-12 col-sm-6 col-md-4">
+              <input type="text" name="secretq" placeholder="Enter secret question">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-4" for="secreta">* Secret Answer:</label>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+            <input type="text" name="secreta" placeholder="Enter secret answer">
+            <h5>Fields marked * are required</h5>
+          </div>
+        </div>
 
       	<div class="form=group">
       		<div class="col-sm-offset-4 col-sm-10">
