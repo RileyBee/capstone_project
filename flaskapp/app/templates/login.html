@@ -12,7 +12,11 @@
       <div class="header">
           <nav>
               <ul class="nav nav-pills pull-right">
-                  <li role="presentation"><a href="register">Sign Up</a>
+                <li role="presentation" class="active"><a href="/">Home</a>
+                </li>
+                  <li role="presentation"><a href="register">Register</a>
+                  </li>
+                  <li role="presentation"><a href="reset">Password Reset</a>
                   </li>
               </ul>
           </nav>
@@ -57,10 +61,5 @@
       </div>
       </div>
       </div>
-
-
-	<script>$(function () {$('[data-toggle="popover"]').popover() }) </script>
-	<script src="{{url_for('static', filename='jquery-3.2.1.min.js')}}"></script>
-	<script src="{{url_for('static', filename='bootstrap.min.js')}}"></script>
 </body>
 </html>

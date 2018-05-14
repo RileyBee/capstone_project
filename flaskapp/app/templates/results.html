@@ -24,14 +24,18 @@ th {
       <div class="header">
           <nav>
               <ul class="nav nav-pills pull-right">
-                  <li role="presentation"><a href="/index">Home</a>
+                <li role="presentation"><a href="/">Home</a>
+                </li>
+                  <li role="presentation" class="active"><a href="index">Search</a>
+                  </li>
+                <li role="presentation"><a href="logout">Logout</a>
                   </li>
               </ul>
           </nav>
 
       </div>
       <div class="jumbotron">
-        <h3>School rankings:</h3>
+        <h3>School Rankings:</h3>
         <table>
           <tr>
           <th>School</th>
@@ -47,22 +51,23 @@ th {
       {% for s in sch %}
 
         <tr>
-        <td>{{s.0}}</td>
-        <td>{{s.1}}</td>
-        <td>{{s.2}}</td>
-        <td>{{s.3}}</td>
-        <td>{{s.4}}</td>
-        <td>{{s.5}}</td>
-        <td>{{s.6}}</td>
-        <td>{{s.7}}</td>
+        <td align="center">{{s.0}}</td>
+        <td align="center">{{s.1}}</td>
+        <td align="center">{{s.2}}</td>
+        <td align="center">{{s.3}}</td>
+        <td align="center">{{s.4}}</td>
+        <td align="center">{{s.5}}</td>
+        <td align="center">{{s.6}}</td>
+        <td align="center">{{s.7}}</td>
 
         {% endfor %}
 
         </tr>
         </table>
-        <h3>Crimerate data:</h3>
+        <h3>Crimerate Data:</h3>
         <table>
           <tr>
+          <th>County</th>
           <th>Year</th>
           <th>Violent</th>
           <th>Property</th>
@@ -79,17 +84,18 @@ th {
       {% for c in cri %}
 
         <tr>
-        <td>{{c.0}}</td>
-        <td>{{c.1}}</td>
-        <td>{{c.2}}</td>
-        <td>{{c.3}}</td>
-        <td>{{c.4}}</td>
-        <td>{{c.5}}</td>
-        <td>{{c.6}}</td>
-        <td>{{c.7}}</td>
-        <td>{{c.8}}</td>
-        <td>{{c.9}}</td>
-        <td>{{c.10}}</td>
+        <td align="center">{{c.0}}</td>
+        <td align="center">{{c.1}}</td>
+        <td align="center">{{c.2}}</td>
+        <td align="center">{{c.3}}</td>
+        <td align="center">{{c.4}}</td>
+        <td align="center">{{c.5}}</td>
+        <td align="center">{{c.6}}</td>
+        <td align="center">{{c.7}}</td>
+        <td align="center">{{c.8}}</td>
+        <td align="center">{{c.9}}</td>
+        <td align="center">{{c.10}}</td>
+        <td align="center">{{c.11}}</td>
 
 
         {% endfor %}
@@ -111,17 +117,58 @@ th {
       {% for j in job %}
 
         <tr>
-        <td>{{j.0}}</td>
-        <td>{{j.1}}</td>
-        <td>{{j.2}}</td>
-        <td>{{j.3}}</td>
-        <td><a href="{{j.4}}">learn more</a></td>
+        <td align="center">{{j.0}}</td>
+        <td align="center">{{j.1}}</td>
+        <td align="center">{{j.2}}</td>
+        <td align="center">{{j.3}}</td>
+        <td align="center"><a href="{{j.4}}">learn more</a></td>
 
 
         {% endfor %}
 
         </tr>
         </table>
+
+        <h3>Local Homes:</h3>
+        <table>
+          <tr>
+          <th>Thumbnail</th>
+          <th>Address</th>
+          <th>State</th>
+          <th>County</th>
+          <th>City</th>
+          <th>Zip</th>
+          <th>Price</th>
+          <th>Bedrooms</th>
+          <th>Bathrooms</th>
+          <th>Square Feet</th>
+          <th>Link</th>
+
+
+        </tr>
+
+      {% for h in home %}
+
+        <tr>
+        <td align="center"><img src="{{h.0}}"></td>
+
+        <td align="center">{{h.1}}</td>
+        <td align="center">{{h.2}}</td>
+        <td align="center">{{h.3}}</td>
+        <td align="center">{{h.4}}</td>
+        <td align="center">{{h.5}}</td>
+        <td align="center">{{h.6}}</td>
+        <td align="center">{{h.7}}</td>
+        <td align="center">{{h.8}}</td>
+        <td align="center">{{h.9}}</td>
+        <td align="center"><a href="{{h.10}}">learn more</a></td>
+
+
+        {% endfor %}
+
+        </tr>
+        </table>
+
 
       </div>
       </div>

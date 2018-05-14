@@ -9,13 +9,25 @@
 </head>
 <body>
   <div class="container">
+    <div class="header">
+        <nav>
+            <ul class="nav nav-pills pull-right">
+              <li role="presentation"><a href="/">Home</a>
+              </li>
+                <li role="presentation"><a href="register">Register</a>
+                </li>
+                <li role="presentation" class="active"><a href="reset">Password Reset</a>
+                </li>
+            </ul>
+        </nav>
       <div class="jumbotron">
 
-        <h2>Complete form to reset password</h2>
+        <h3>Complete form to reset password</h3>
+       <h5>&emsp;&emsp;All fields are required.</h5>
 
           <div class="row">
             <div class= "col-xs-12">
-      		  <form class="form-horizontal" action="/authenticate" method="post">
+      		  <form class="form-horizontal" action="/preset" method="post">
     {% if error %}<h4>{{ error }}</h4>{% endif %}
             <div class="form-group">
               <label class="control-label col-sm-4" for="user_name">Username:</label>
@@ -33,6 +45,22 @@
             <label class="control-label col-sm-4" for="secreta">Secret Answer:</label>
             <div class="col-xs-12 col-sm-6 col-md-4">
               <input type="text" name="secreta" placeholder="Enter answer to security question">
+            </div>
+          </div>
+          <br>
+          <div>
+        <h4>New Password:</h4>
+        </div>
+          <div class="form-group">
+            <label class="control-label col-sm-4" for="pwd">Password:</label>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <input type="password" name="password" placeholder="Enter password">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-4" for="confirm">Confirm:</label>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <input type="password" name="confirm" placeholder="Confirm password">
             </div>
           </div>
       	</div>
